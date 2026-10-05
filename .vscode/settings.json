@@ -1,0 +1,6 @@
+{
+    "sonarlint.connectedMode.project": {
+        "connectionId": "gregorio-mg",
+        "projectKey": "gregorio-mg_reportaudit-lab"
+    }
+}

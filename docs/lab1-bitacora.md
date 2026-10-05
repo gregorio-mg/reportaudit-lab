@@ -11,13 +11,13 @@
 
 ## Parte B — Auditoría manual (antes de usar ninguna herramienta)
 
-| # | Función | Línea | Qué sospechas | Dato de entrada (*source*) | Destino peligroso (*sink*) | Impacto para el negocio |
-|---|---|---|---|---|---|---|
-| 1 | obtener_reportes | app/reporte_auditoria.py | Inyección SQL (SQLi): Concatenación directa del parámetro cliente en la consulta SQL sin parametrizar. | Parámetro cliente de la URL (request.args). | cursor.execute(query) | Acceso no autorizado a datos confidenciales de todos los clientes o filtración completa de la BBDD. |
-| 2 | convertir_a_pdf | app/reporte_auditoria.py | Inyección de Comandos (Command Injection): Uso de os.system o subprocess pasando un nombre de archivo sin validar mediante la shell. | Parámetro archivo de la URL (request.args). | Llamada a la shell del sistema (os.system / subprocess). | Ejecución remota de código (RCE) en el servidor Ubuntu; control total de la máquina por un atacante. |
-| 3 | cargar_configuracion | app/reporte_auditoria.py | Inseguridad al deserializar YAML: Uso de yaml.load con FullLoader o Loader completo en lugar de SafeLoader. | Archivo de configuración YAML / Entrada de usuario. | yaml.load(...) | Deserialización insegura que permite ejecución arbitraria de código al cargar un YAML malicioso. |
-| 4 | hash_password_legacy | app/reporte_auditoria.py | Criptografía débil: Uso de algoritmo hash obsoleto (MD5/SHA1) y sin utilizar salt. | Contraseña en texto plano. | Algoritmo Hash sin salt (hashlib.md5 / sha1) | Contraseñas vulnerables a ataques de diccionario o tablas Rainbow; filtración de credenciales. |
-| 5 | Constantes del principio | app/reporte_auditoria.py | Hardcoded Secrets: Claves API, tokens o contraseñas escritas directamente en texto plano en el código fuente. | Código fuente (valores constantes). | Asignación directa a variables en el código. | Filtración de credenciales del sistema en el repositorio de Git; acceso directo a servicios de terceros. |
+| # | Función | Línea | Qué sospechas | Dato de entrada (*source*) | Destino peligroso (*sink*) |
+|---|---|---|---|---|---|
+| 1 |  |  |  |  |  |
+| 2 |  |  |  |  |  |
+| 3 |  |  |  |  |  |
+| 4 |  |  |  |  |  |
+| 5 |  |  |  |  |  |
 
 **Impacto en el negocio:** para cada sospecha, explica en una frase qué
 consecuencia tendría para ReportAudit y sus clientes si fuera real (qué datos,
